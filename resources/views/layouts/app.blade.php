@@ -1,87 +1,90 @@
 <!DOCTYPE html>
-<html lang="zxx" class="js">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="js">
 
 <head>
-    <!-- <base href="../"> -->
     <meta charset="utf-8">
-    <meta name="author" content="Softnio">
+    <meta name="author" content="TRS">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Tasks">
-    <!-- Fav Icon  -->
-    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
-    <!-- Page Title  -->
-    <title>Shipping</title>
-    <!-- StyleSheets  -->
-    <link rel="stylesheet" href="{{asset('assets/css/dashlite.css')}}">
-    <link id="skin-default" rel="stylesheet" href="{{asset('assets/css/theme.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/libs/bootstrap-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/libs/fontawesome-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/libs/themify-icons.css')}}">
+    <meta name="description" content="An onboarding website for the clients to manage their projects easily and efficiently.">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <style>
-        div.dataTables_wrapper div.dataTables_length select {
-            margin: 10px;
+    <title>@yield('title') | {{ config('app.name') }}</title>
 
-        }
+    <link rel="shortcut icon" href="{{ url('images/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url('css/theme.min.css?ver=2.9.0') }}">
+    <link rel="stylesheet" href="{{ url('css/common.css') }}">
 
-        .dataTables_filter {
-            float: right;
-        }
-
-        div.dataTables_wrapper div.dataTables_filter input {
-            width: 190px;
-        }
-    </style>
-    <!-- Scripts -->
-    @stack("styles")
-	@yield("styles")
+    @stack('styles')
 </head>
 
-<body class="nk-body bg-lighter npc-general has-sidebar ">
+<body class="nk-body bg-lighter npc-general has-sidebar">
+    <!-- app-root @s -->
     <div class="nk-app-root">
-        <!-- main @s -->
         <div class="nk-main ">
-            <!-- sidebar @s -->
             @include('layouts.sidebar')
-            <!-- sidebar @e -->
 
-            <!-- wrap @s -->
             <div class="nk-wrap ">
-                <!-- main header @s -->
                 @include('layouts.header')
-                <!-- main header @e -->
 
                 <!-- content @s -->
-                @yield('content')
+                <div class="nk-content ">
+                    <div class="container-fluid">
+                        <div class="nk-content-inner">
+                            <div class="nk-content-body">
+
+                                @yield('content')
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- content @e -->
 
-                <!-- footer @s -->
                 @include('layouts.footer')
-                <!-- footer @e -->
             </div>
-            <!-- wrap @e -->
         </div>
-        <!-- main @e -->
     </div>
     <!-- app-root @e -->
 
-    <!-- JavaScript -->
-    <script src="{{asset('assets/js/bundle.js')}}"></script>
-    <script src="{{asset('assets/js/vendors/nioapp/nioapp.min.js')}}"></script>
-    <script src="{{asset('assets/js/scripts.js')}}"></script>
-    <script src="{{asset('assets/js/example-sweetalert.js')}}"></script>
-    <script src="{{asset('assets/js/example-toastr.js')}}"></script>
-    <script>
-		$(document).ready(function() {
-			// $('[data-toggle="tooltip"]').tooltip();
-			// $('[data-toggle="popover"]').popover();
-			// $('.delete-record').on("click", function(e) {
-			// 	e.preventDefault();
-			// });
-		});
-	</script>
-    @stack("scripts")
+    <!-- Ajax modal @s -->
+    <div class="modal fade zoom bd-example-modal-lg" id="ajax-modal" data-backdrop="static" data-keyboard="false"
+        tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <a href="javascript:void(0);" class="close" modal-close>
+                    <em class="icon ni ni-cross-sm"></em>
+                </a>
+                <div class="modal-body modal-body-lg">
+                    <div id="content"></div>
+                    <div id="spinner">
+                        <div class="modal-body text-center">
+                            <div class="spinner spinner-border text-center" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Ajax modal @e -->
 
+    <script src="{{ url('js/bundle.js?ver=2.9.0') }}"></script>
+    <script src="{{ url('js/scripts.js?ver=2.9.0') }}"></script>
+    <script src="{{ url('js/axios-1.6.2.min.js') }}"></script>
+    <script src="{{ url('js/utilities.js') }}"></script>
+
+    <script>
+        $.extend(true, $.fn.dataTable.defaults, {
+            oLanguage: {
+                sSearch: '',
+                sSearchPlaceholder: 'Type in to Search',
+                sLengthMenu: 'Show _MENU_',
+            }
+        });
+    </script>
+
+    @stack('scripts')
 </body>
 
 </html>

@@ -1,0 +1,79 @@
+.dataTables_wrapper .row:first-child {
+    flex-direction: row-reverse;
+    margin-bottom: 1em !important;
+    margin-left: -14px !important;
+    margin-right: -14px !important;
+}
+
+.dataTables_wrapper .dataTables_length {
+    text-align: right;
+}
+
+.dataTables_wrapper .dataTables_length select {
+    margin-left: 0.5em;
+}
+
+/* .dataTables_wrapper .row:nth-child(2) {
+    overflow-x: auto !important;
+} */
+
+.dark-mode .dataTables_wrapper table {
+    border-color: #384d69 !important;
+}
+
+.dataTables_wrapper table {
+    border: 1px solid #dbdfea;
+    border-radius: 3px;
+}
+
+.dataTables_wrapper .row:last-child {
+    margin-top: 1em !important;
+}
+
+.dataTables_wrapper .dataTables_paginate ul {
+    justify-content: flex-end !important;
+}
+
+.dataTables_wrapper table {
+    border: 1px solid #ebeef4;
+}
+
+td {
+    vertical-align: middle !important;
+}
+
+.form-control,
+div.dataTables_wrapper div.dataTables_filter input,
+.dual-listbox .dual-listbox__search {
+    border: 1px solid #ebeef4;
+}
+
+.swal2-cancel,
+.swal2-cancel:hover {
+    color: #8094ae !important;
+    background: transparent !important;
+    margin-left: 0px;
+}
+
+.nk-notification-item:hover {
+    background-color: #f5f5f5;
+}
+
+.toast-title {
+    padding-left: 2.35rem;
+}
+
+.dark-mode input:-webkit-autofill {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #fff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #141c36;
+}
+
+.input-daterange input {
+    background: #fff !important;
+}
+
+.dark-mode .range {
+    background: #1d2d40 !important;
+}
