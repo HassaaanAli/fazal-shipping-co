@@ -20,12 +20,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     // profile
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function () {
         // Profile
@@ -44,6 +42,14 @@ Route::middleware('auth')->group(function () {
 
      // Setting Controller
      Route::resource('settings', App\Http\Controllers\SettingController::class)->only(['store']);
+
+     // Company Controller
+     Route::resource('/company', App\Http\Controllers\CompanyController::class)->except(['show']);
+     Route::get('/company-dt', [App\Http\Controllers\CompanyController::class, 'dataTable'])->name('company-dt');
+
+     // Importer Controller
+     Route::resource('/importer', App\Http\Controllers\ImporterController::class)->except(['show']);
+     Route::get('/importer-dt', [App\Http\Controllers\ImporterController::class, 'dataTable'])->name('importer-dt');
 });
 
 require __DIR__.'/auth.php';

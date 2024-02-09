@@ -3,106 +3,133 @@
 @section('title', 'Dashboard')
 
 @push('styles')
-    <style>
-        .traffic-channel-group {
-            width: 500px;
-        }
+<style>
+    .traffic-channel-group {
+        width: 500px;
+    }
 
-        .traffic-channel-data {
-            width: 33%;
-        }
-    </style>
+    .traffic-channel-data {
+        width: 33%;
+    }
+
+</style>
 @endpush
 
 @section('content')
-    <div class="nk-content-inner">
-        <div class="nk-content-body">
-            <div class="nk-block-head nk-block-head-sm">
-                <div class="nk-block-between">
-                    <div class="nk-block-head-content">
-                        <h3 class="nk-block-title page-title">Dashboard</h3>
-                    </div>
-                    <div class="nk-block-head-content">
-                        <div class="toggle-wrap nk-block-tools-toggle">
-                            <a href="javascript:void(0);" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu">
-                                <em class="icon ni ni-more-v"></em>
-                            </a>
-                            <div class="toggle-expand-content" data-content="pageMenu">
-                                <ul class="nk-block-tools g-3">
-                                    <li>
-                                        <select class="form-control form-control-lg select2" id="campaign-select">
-                                        </select>
-                                    </li>
-                                </ul>
+<div class="nk-content-inner">
+    <div class="nk-content-body">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between">
+                <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title">Dashboard</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row g-gs">
+            <div class="col-md-4 mt-5 mb-2">
+                <div class="card card-bordered">
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Companies</h4>
+                            </div>
+                            <div class="col text-right">
+                                <div class="card-subtitle mb-2">
+                                    <h6 class="mt-2">Total Companies</h6>
+                                    <h3>24</h3>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="nk-block" id="charts">
-                <div class="row g-gs">
-                    <div class="col-7">
-                        <div class="card card-bordered h-100">
-                            <div class="card-inner">
-                                <div class="card-title-group align-start pb-3 g-2">
-                                    <div class="card-title card-title-sm">
-                                        <h6 class="title">Campaign Overview</h6>
-                                        <p>Impression/Click trend over time.</p>
-                                    </div>
-                                    <div class="card-tools">
-                                    </div>
-                                </div>
-                                <div class="analytic-au">
-                                    <div class="analytic-au-ck">
-                                        <div class="d-flex justify-content-center h-75 spinner">
-                                            <div class="spinner-border align-self-center">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                        </div>
-                                        <canvas class="analytics-au-chart" id="analyticAuData"></canvas>
-                                    </div>
+
+            <div class="col-md-4 mt-5 mb-2">
+                <div class="card card-bordered">
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Importers</h4>
+                            </div>
+                            <div class="col text-right">
+                                <div class="card-subtitle mb-2">
+                                    <h6 class="mt-2">Total Importers</h6>
+                                    <h3>24</h3>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- .col -->
-                    <div class="col-5">
-                        <div class="card card-bordered h-100">
-                            <div class="card-inner">
-                                <div class="card-title-group">
-                                    <div class="card-title card-title-sm">
-                                        <h6 class="title">Countries</h6>
-                                    </div>
-                                    <div class="card-tools">
-                                    </div>
-                                </div>
-                                <div class="traffic-channel">
-                                    <div class="traffic-channel-doughnut-ck">
-                                        <div class="d-flex justify-content-center h-75 spinner">
-                                            <div class="spinner-border align-self-center">
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                        </div>
-                                        <canvas class="analytics-doughnut" id="TrafficChannelDoughnutData"></canvas>
-                                    </div>
-                                    <div class="traffic-channel-group pl-5 g-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 mb-2">
+                <div class="card card-bordered">
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Users</h4>
+                            </div>
+                            <div class="col text-right">
+                                <div class="card-subtitle mb-2">
+                                    <h6 class="mt-2">Total Users</h6>
+                                    <h3>24</h3>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- .col -->
-                    <div class="col-12">
-                        <div class="card card-bordered h-100">
-                            <div class="card-inner">
-                                <div class="card-title-group pb-3 g-2">
-                                    <div class="card-title card-title-sm">
-                                        <h6 class="title">Campaign Spend Overview</h6>
-                                        <p>Actual and average spend trend over time.</p>
-                                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 mb-2">
+                <div class="card card-bordered">
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Jobs Pending</h4>
+                            </div>
+                            <div class="col text-right">
+                                <div class="card-subtitle mb-2">
+                                    <h6 class="mt-2">Total Jobs Pending</h6>
+                                    <h3>24</h3>
                                 </div>
                             </div>
                         </div>
-                    </div><!-- .col -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 mb-2">
+                <div class="card card-bordered">
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Completed Jobs</h4>
+                            </div>
+                            <div class="col text-right">
+                                <div class="card-subtitle mb-2">
+                                    <h6 class="mt-2">Total Completed Jobs</h6>
+                                    <h3>24</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-5 mb-2">
+                <div class="card card-bordered">
+                    <div class="card-inner">
+                        <div class="row">
+                            <div class="col">
+                                <h4 class="card-title">Total Jobs</h4>
+                            </div>
+                            <div class="col text-right">
+                                <div class="card-subtitle mb-2">
+                                    <h6 class="mt-2">Total Total Jobs</h6>
+                                    <h3>24</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
